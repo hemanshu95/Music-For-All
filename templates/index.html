@@ -5,15 +5,28 @@
           rel="stylesheet">
     <script type="text/javascript" src="{{ url_for('static', filename='qrcode.js') }}" ></script>
 
+    <style>
+    .selected{
+      font-weight: bold;
+    }
+    </style>
+
     <title>Jukebox Player - {{ title }}</title>
   </head>
   <body>
     <div class="container">
 
 
+    <audio id = "player" preload="auto" controls data-embedded/>
+    </audio>
+
+      <ul id="playlist">
+
       {% for i in range(music_files_number) %}
-          <p> {{ i+1 }}) {{ music_files[i] }} </p>
+          <li data-mp3 = "uploads/{{music_files[i]}}"> {{ i+1 }}) {{ music_files[i] }} </li>
       {% endfor %}
+
+      </ul>
 
 
       <div id="qrcode"></div>
@@ -34,7 +47,7 @@
       </div>
     </div>
 
-
+    <script type="text/javascript" src="{{ url_for('static', filename='music_player.js') }}" ></script>
 
 
   </body>
