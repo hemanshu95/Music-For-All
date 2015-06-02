@@ -13,7 +13,7 @@ app = Flask(__name__)
 # This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 # These are the extension that we are accepting to be uploaded
-app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+app.config['ALLOWED_EXTENSIONS'] = set(['mp3'])
 
 # For a given file, return whether it's an allowed type or not
 def allowed_file(filename):
@@ -57,6 +57,6 @@ def uploaded_file(filename):
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=int("8000"),
+        port=int("8080"),
         debug=True
     )
