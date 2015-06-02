@@ -3,16 +3,23 @@
   <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
           rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='qrcode.js') }}" ></script>
 
     <title>Jukebox Player - {{ title }}</title>
   </head>
   <body>
     <div class="container">
 
+
       {% for i in range(music_files_number) %}
           <p> {{ i+1 }}) {{ music_files[i] }} </p>
       {% endfor %}
 
+
+      <div id="qrcode"></div>
+      <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "http://{{ip_addr}}:8080/");
+      </script>
 
       <div class="header">
         <h3 class="text-muted">Upload a File</h3>
@@ -26,6 +33,10 @@
       </form>
       </div>
     </div>
+
+
+
+
   </body>
 </html>
  

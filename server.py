@@ -31,7 +31,8 @@ def index():
     return render_template('index.html',
     title = 'Home',
     music_files_number = music_files_number,
-    music_files = music_files)
+    music_files = music_files,
+    ip_addr =  request.remote_addr)
 
 
 # Route that will process the file upload
@@ -51,7 +52,7 @@ def upload():
         return redirect(url_for('uploaded_file',
                                 filename=filename))
 
-    
+
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
