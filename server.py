@@ -25,7 +25,13 @@ def allowed_file(filename):
 # value of the operation
 @app.route('/')
 def index():
-    return render_template('index.html')
+    music_files = [f for f in os.listdir('uploads/') if f.endswith('mp3')]
+    music_files_number = len(music_files)
+
+    return render_template('index.html',
+    title = 'Home',
+    music_files_number = music_files_number,
+    music_files = music_files)
 
 
 # Route that will process the file upload
@@ -45,6 +51,8 @@ def upload():
         return redirect(url_for('uploaded_file',
                                 filename=filename))
 
+    
+
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
 # directory and show it on the browser, so if the user uploads
@@ -60,3 +68,4 @@ if __name__ == '__main__':
         port=int("8080"),
         debug=True
     )
+
