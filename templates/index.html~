@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <title>Jukebox Player - {{ title }}</title>
+  </head>
+  <body>
+    <div class="container">
+
+      {% for i in range(music_files_number) %}
+          <p> {{ i+1 }}) {{ music_files[i] }} </p>
+      {% endfor %}
+
+
+      <div class="header">
+        <h3 class="text-muted">Upload a File</h3>
+      </div>
+      <hr/>
+      <div>
+      
+      <form action="upload" method="post" enctype="multipart/form-data" required = "required"  multiple = "multiple" accept=".mp3">
+        <input type="file" name="file"><br /><br />
+        <input type="submit" value="Upload">
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
+ 
